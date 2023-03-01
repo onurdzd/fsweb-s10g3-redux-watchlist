@@ -9,7 +9,6 @@ function App() {
   const dispatch=useDispatch()
   let sira=useSelector((store)=> store.movieReducer.sira)
   const movie = useSelector(store=> store.movieReducer.movies)[sira]
-  const favMovies = useSelector((store)=> store.favoriteReducer.favorite);
   
   return (
     <div className="wrapper max-w-2xl mx-auto">
@@ -23,8 +22,7 @@ function App() {
       </nav>
       <Switch>
         <Route exact path="/">
-          <Movie sira={sira} />
-
+          <Movie />
           <div className="flex gap-3 justify-end py-3">
             {sira!==0 &&
             <button className="select-none px-4 py-2 border bg-green-500 border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500" onClick={()=>dispatch(oncekiFilm())}>
@@ -44,13 +42,8 @@ function App() {
             </button>
           </div>
         </Route>
-
         <Route path="/listem">
-          <div>
-            {favMovies.map((movie) => (
-              <FavMovie key={movie.id} title={movie.title} id={movie.id} />
-            ))}
-          </div>
+              <FavMovie/>
         </Route>
       </Switch>
     </div>
