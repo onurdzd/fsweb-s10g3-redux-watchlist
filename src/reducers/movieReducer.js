@@ -1,6 +1,7 @@
 import { movies } from "../movies";
 import { SIRADAKI_FILM,BASA_DON,ONCEKI_FILM } from "../actions/movieAction";
 
+
 const initialState ={
     movies:[...movies],
     sira:0
