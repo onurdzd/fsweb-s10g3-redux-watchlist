@@ -1,4 +1,7 @@
 import { LISTEME_EKLE ,FAVORI_CIKAR} from "../actions/favoriteAction";
+import { toast } from "react-toastify";
+const notifyEkle = () => toast("Favori listesine eklendi!");
+const notifySil = () => toast("Favori listesinden çıkartıldı!");
 
 const initialState ={
     favorite:[]
@@ -7,7 +10,7 @@ const initialState ={
 export const favoriteReducer =(state=initialState,action)=>{
     switch(action.type){
         case LISTEME_EKLE :
-            console.log(state.favorite.length===0, state.favorite.includes(action.payload))
+            notifyEkle()
             if(state.favorite.includes(action.payload)===false){
                 return {
                      ...state,
@@ -16,6 +19,7 @@ export const favoriteReducer =(state=initialState,action)=>{
                 return state;
             }
         case FAVORI_CIKAR :
+            notifySil()
             return{
             ...state,
             favorite:state.favorite.filter(item=> item.id!== action.payload)

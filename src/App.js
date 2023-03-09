@@ -5,6 +5,9 @@ import { useSelector,useDispatch } from "react-redux";
 import {basaDon, oncekiFilm, siradakiFilm } from "./actions/movieAction";
 import { listemeEkle } from "./actions/favoriteAction";
 import { movies } from "./movies";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const dispatch=useDispatch()
   let sira=useSelector((store)=> store.movieReducer.sira)
@@ -30,7 +33,7 @@ function App() {
             </button>}
             {sira<movies.length-1 && <button
               onClick={()=>dispatch(siradakiFilm())}
-              className="select-none px-4 py-2 border border-blue-700 text-blue-700 hover:border-blue-500 hover:text-blue-500 bg-orange-600"
+              className="select-none px-4 py-2 border border-blue-700 text-white hover:bg-orange-400  bg-orange-500"
             >
               Sıradaki
             </button>}
@@ -46,6 +49,16 @@ function App() {
               <FavMovie/>
         </Route>
       </Switch>
+      <ToastContainer position="top-right"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"/>
     </div>
   );
 }
